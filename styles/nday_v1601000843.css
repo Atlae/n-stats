@@ -1,0 +1,325 @@
+.nationnavbar i.icon-radioactive {
+    color: #c41f1f
+}
+
+.nukeselfview {
+    background-color: #eaead2;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    border-radius: 4px;
+    display: block
+}
+
+#page_nukes #nationcover,
+#page_factions #nationcover,
+#page_faction #nationcover {
+    min-height: 120px;
+    height: auto;
+    background-position: center bottom
+}
+
+#nuclearcontroltitle {
+    z-index: 4;
+    position: relative;
+    text-align: center;
+    margin: 0;
+    padding: .6em
+}
+
+#page_faction #nuclearcontroltitle {
+    padding-top: 0
+}
+
+#nuclearcontroltitle,
+#nuclearcontroltitle a:link,
+#nuclearcontroltitle a:visited {
+    color: #fff;
+    text-shadow: -1px -1px 1px #000
+}
+
+#nuclearcontroltitle .factionheader {
+    font-size: 18px;
+    border-bottom: 1px solid #fff;
+    letter-spacing: 6px
+}
+
+#nuclearcontroltitle .fancylike a:link,
+#nuclearcontrol .fancylike a:visited {
+    text-shadow: -1px -1px 1px #000, 0 0 1px #000, 1px 1px 1px #000
+}
+
+#nuclearcontroltitle i.icon-radioactive {
+    font-size: 84%;
+    position: relative;
+    top: -2px
+}
+
+#nuclearcontroltitle i.icon-radioactive:before {
+    margin: 0
+}
+
+img#bannerflag {
+    margin-right: 12px
+}
+
+#page_faction fieldset.wfe {
+    clear: right
+}
+
+.nukestat {
+    margin-right: 3px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px;
+    display: inline-block
+}
+
+.nukestat-current {
+    border-color: #dadad2
+}
+
+a.nukestat:hover {
+    border-color: #dadad2;
+    background-color: #fafaf6;
+    box-shadow: 1px 1px 6px #ccc;
+    text-decoration: none;
+    text-shadow: 0 0 3px #ccc
+}
+
+a.nukestat:link,
+a.nukestat:visited {
+    color: inherit
+}
+
+a.nukestat-targeted.nukestat-nonzero {
+    color: #f05d20;
+    text-shadow: -1px -1px 1px #fdc
+}
+
+a.nukestat-incoming.nukestat-nonzero {
+    color: #f02020;
+    text-shadow: -1px -1px 1px #600
+}
+
+button.extraicon i {
+    padding-left: 1em;
+    padding-right: .5em
+}
+
+.nuketoken {
+    font-size: 125%;
+    font-weight: 700;
+    white-space: nowrap
+}
+
+.nuketoken i {
+    font-size: 150%
+}
+
+.nukestat-tooltip {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: helvetica neue, Verdana, Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 10px
+}
+
+a.nukestat-targeted.nukestat-nonzero .nukestat-tooltip,
+a.nukestat-incoming.nukestat-nonzero .nukestat-tooltip {
+    text-shadow: none
+}
+
+.nukebuybutton .nuketoken i {
+    font-size: inherit;
+    font-weight: 400
+}
+
+.nukehelp {
+    color: #666;
+    border-left: 4px solid #dadad2;
+    border-radius: 2px;
+    margin-top: 2em;
+    font-style: italic;
+    padding-left: 1em
+}
+
+#nukewfetext {
+    width: 100%;
+    font-size: 120%;
+    min-height: 9em;
+    padding: 8px
+}
+
+.nday_ticker {
+    display: block;
+    color: #fff;
+    font-size: 90%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255, 112, 112, 1) 0%, rgba(112, 64, 64, 1) 100%)
+}
+
+.nday_ticker a:link,
+.nday_ticker a:visited {
+    color: #fff
+}
+
+.nday_ticker .nukerank {
+    background: #eee;
+    border-radius: 1em;
+    color: #b55757;
+    padding: 0 3px;
+    font-weight: 700
+}
+
+.nukescoreboardselector {
+    text-align: center;
+    line-height: 2em
+}
+
+.nukescoreboardselector a {
+    white-space: nowrap;
+    line-height: 1.5em
+}
+
+table.nukescoreboard td:first-child {
+    text-align: center
+}
+
+table.nukescoreboard td:nth-child(3) {
+    text-align: center;
+    font-size: 120%
+}
+
+table.nukescoreboard td:nth-child(4) {
+    text-align: center
+}
+
+table.nukescoreboard img.smallflag {
+    float: right
+}
+
+table.nukescoreboard .factionname {
+    line-height: 2em
+}
+
+table.nukestats td:nth-child(1n+3) {
+    text-align: center
+}
+
+a.nukehomehotlink:link,
+a.nukehomehotlink:visited {
+    position: relative;
+    z-index: 5;
+    font-size: 300%;
+    color: #c41f1f
+}
+
+a.nukehomehotlink:hover {
+    text-shadow: 2px 2px 4px rgba(255, 200, 200, .5);
+    color: red
+}
+
+h1.nukeh1 .fancylike {
+    white-space: nowrap;
+    font-size: 20px;
+    text-shadow: none
+}
+
+.nukedestroyedicon {
+    color: #c41f1f;
+    margin-left: 1em;
+    font-size: 120%
+}
+
+.nukespecialtycode {
+    margin-left: 1em;
+    border: 1px dotted #999;
+    color: #444;
+    padding: 0 3px;
+    font-size: 90%;
+    font-weight: 700
+}
+
+.factionname {
+    font-size: 85%;
+    white-space: nowrap;
+    background-color: #efefea;
+    padding: 1px 4px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0 #aaa
+}
+
+a.factionname:link,
+a.factionname:visited {
+    color: #666
+}
+
+.nukescoreboard .factionname,
+.nukescoreboard .nuketoken,
+.nukescoreboard .nuketoken i {
+    font-size: 110%
+}
+
+.nukenfaction {
+    float: right
+}
+
+.recaptcha-box {
+    text-align: center;
+    margin: 1.5em 1em
+}
+
+.faction_region_booster,
+.faction_region_booster a:link,
+.faction_region_booster a:visited {
+    text-align: center;
+    color: #444;
+    text-shadow: 1px 1px 1px #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    clear: right
+}
+
+.faction_region_booster_middle {
+    background-color: #dadad2;
+    width: 80%;
+    display: flex;
+    margin-left: 10%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(234, 234, 224, 1) 23%, rgba(234, 234, 224, 1) 77%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+}
+
+a.fboostername:link,
+a.fboostername:visited {
+    font-size: 250%;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px #444, 2px 2px 12px #666;
+    color: #fff;
+    position: relative
+}
+
+.fboostername i.icon-missile {
+    position: absolute;
+    left: -1.8em
+}
+
+.nday-special {
+    background: linear-gradient(to bottom, rgba(255, 112, 112, 1) 0%, rgba(112, 64, 64, 1) 100%);
+    padding: .5em;
+    color: #fff;
+    border-radius: .4em
+}
+
+.nday-special h4 {
+    margin: 0;
+    font-size: 200%
+}

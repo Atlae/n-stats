@@ -1,0 +1,358 @@
+@font-face {
+    font-family: nationstates;
+    src: url(../font/nationstates.eot?99730624);
+    src: url(../font/nationstates.eot?99730624#iefix) format('embedded-opentype'), url(../font/nationstates.woff2?99730624) format('woff2'), url(../font/nationstates.woff?99730624) format('woff'), url(../font/nationstates.ttf?99730624) format('truetype'), url(../font/nationstates.svg?99730624#nationstates) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+[class^=icon-]:before,
+[class*=" icon-"]:before {
+    font-family: nationstates;
+    font-style: normal;
+    font-weight: 400;
+    speak: never;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-align-left:before {
+    content: '\e800'
+}
+
+.icon-chat-empty:before {
+    content: '\e801'
+}
+
+.icon-login:before {
+    content: '\e802'
+}
+
+.icon-flag-empty:before {
+    content: '\e803'
+}
+
+.icon-star:before {
+    content: '\e804'
+}
+
+.icon-mic:before {
+    content: '\e805'
+}
+
+.icon-globe:before {
+    content: '\e806'
+}
+
+.icon-book:before {
+    content: '\e807'
+}
+
+.icon-gift:before {
+    content: '\e808'
+}
+
+.icon-building:before {
+    content: '\e809'
+}
+
+.icon-radar:before {
+    content: '\e80a'
+}
+
+.icon-mail:before {
+    content: '\e80b'
+}
+
+.icon-right-hand:before {
+    content: '\e80c'
+}
+
+.icon-cog-alt:before {
+    content: '\e80d'
+}
+
+.icon-male:before {
+    content: '\e80e'
+}
+
+.icon-megaphone:before {
+    content: '\e80f'
+}
+
+.icon-lock:before {
+    content: '\e810'
+}
+
+.icon-link-ext:before {
+    content: '\e811'
+}
+
+.icon-help:before {
+    content: '\e812'
+}
+
+.icon-heart:before {
+    content: '\e813'
+}
+
+.icon-rss-1:before {
+    content: '\e814'
+}
+
+.icon-award:before {
+    content: '\e815'
+}
+
+.icon-flash:before {
+    content: '\e816'
+}
+
+.icon-chart-bar:before {
+    content: '\e817'
+}
+
+.icon-shield:before {
+    content: '\e818'
+}
+
+.icon-logout:before {
+    content: '\e819'
+}
+
+.icon-newspaper:before {
+    content: '\e81a'
+}
+
+.icon-town-hall:before {
+    content: '\e81b'
+}
+
+.icon-industrial-building:before {
+    content: '\e81c'
+}
+
+.icon-monument:before {
+    content: '\e81d'
+}
+
+.icon-star-empty:before {
+    content: '\e81e'
+}
+
+.icon-link:before {
+    content: '\e81f'
+}
+
+.icon-search:before {
+    content: '\e820'
+}
+
+.icon-wa:before {
+    content: '\e821'
+}
+
+.icon-flag-1:before {
+    content: '\e822'
+}
+
+.icon-flag-checkered:before {
+    content: '\e823'
+}
+
+.icon-heart-empty:before {
+    content: '\e824'
+}
+
+.icon-mail-alt:before {
+    content: '\e825'
+}
+
+.icon-comment:before {
+    content: '\e826'
+}
+
+.icon-chat:before {
+    content: '\e827'
+}
+
+.icon-comment-empty:before {
+    content: '\e828'
+}
+
+.icon-bell:before {
+    content: '\e829'
+}
+
+.icon-bell-alt:before {
+    content: '\e82a'
+}
+
+.icon-menu:before {
+    content: '\e82b'
+}
+
+.icon-lightbulb:before {
+    content: '\e82c'
+}
+
+.icon-arrows-cw:before {
+    content: '\e82d'
+}
+
+.icon-chart-bar-1:before {
+    content: '\e82e'
+}
+
+.icon-plus:before {
+    content: '\e82f'
+}
+
+.icon-coffee:before {
+    content: '\e830'
+}
+
+.icon-globe-1:before {
+    content: '\e831'
+}
+
+.icon-news:before {
+    content: '\e832'
+}
+
+.icon-stackexchange:before {
+    content: '\e833'
+}
+
+.icon-ok-circled:before {
+    content: '\e834'
+}
+
+.icon-cancel-circled2:before {
+    content: '\e835'
+}
+
+.icon-plus-circled:before {
+    content: '\e836'
+}
+
+.icon-target-1:before {
+    content: '\e837'
+}
+
+.icon-lock-open:before {
+    content: '\e838'
+}
+
+.icon-chart-area:before {
+    content: '\e839'
+}
+
+.icon-chart-line:before {
+    content: '\e83a'
+}
+
+.icon-female:before {
+    content: '\e83b'
+}
+
+.icon-target:before {
+    content: '\e83c'
+}
+
+.icon-award-1:before {
+    content: '\e83d'
+}
+
+.icon-chart:before {
+    content: '\e83e'
+}
+
+.icon-brain:before {
+    content: '\e83f'
+}
+
+.icon-radioactive:before {
+    content: '\e840'
+}
+
+.icon-biohazard:before {
+    content: '\e841'
+}
+
+.icon-doc:before {
+    content: '\e842'
+}
+
+.icon-mushroom-cloud:before {
+    content: '\e843'
+}
+
+.icon-satellite:before {
+    content: '\e844'
+}
+
+.icon-missile-inc:before {
+    content: '\e845'
+}
+
+.icon-bombs:before {
+    content: '\e846'
+}
+
+.icon-missile:before {
+    content: '\e847'
+}
+
+.icon-clock:before {
+    content: '\e848'
+}
+
+.icon-block:before {
+    content: '\e849'
+}
+
+.icon-spin5:before {
+    content: '\e84a'
+}
+
+.icon-basket:before {
+    content: '\e84b'
+}
+
+.icon-cards:before {
+    content: '\e84c'
+}
+
+.icon-crown:before {
+    content: '\e84d'
+}
+
+.icon-key:before {
+    content: '\e84e'
+}
+
+.icon-beaker:before {
+    content: '\f0c3'
+}
+
+.icon-docs:before {
+    content: '\f0c5'
+}
+
+.icon-doc-inv:before {
+    content: '\f15b'
+}
+
+.icon-balance-scale:before {
+    content: '\f24e'
+}

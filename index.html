@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>N-Day Stats</title>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Atlae"/>
+        <meta name="description" content="N-Day Stats"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="styles/nday_v1601000843.css"/>
+        <link rel="stylesheet" href="styles/ns_v1687727753.css"/>
+        <link rel="stylesheet" href="styles/nationstates_v1681801838.css"/>
+        <link rel="stylesheet" href="styles/ghbuttons_v1680471822.css"/>
+    </head>
+    <body>
+        <header>
+            <h1 style="margin:1rem">N-Day Stats</h1>
+        </header>
+        <main>
+            <noscript class="error">
+                <p>This page requires JavaScript to function properly. You will be able to manually load data, but some features are not supported.</p>
+            </noscript>
+
+            <!-- create dialog for main nation and list of puppet nations -->
+            <dialog>
+                <form>
+                    <input type="text" name="main" placeholder="Main Nation Name" required/>
+                    <br/>
+                    <textarea name="puppets" placeholder="Puppet Nation Names, in a comma-separated list" rows="10" cols="19" required></textarea>
+                    </br>
+                    <button type="submit" id="submit">Submit</button>
+                    <button type="reset" id="reset">Reset</button>
+                    <button type="button" id="cancel">Cancel</button>
+                </form>
+            </dialog>
+
+            <!-- section to explain what this is about and what the buttons to do in a nice collapsable aside element -->
+            <section>
+                <details open style="float:right; margin:2em;">
+                    
+                    <aside>
+                        <h2>What is this?</h2>
+                        <p>This is a tool to help you keep track of your stats during N-Day.</p>
+                        <p>It will automatically calculate your average stats, as well as your total stats.</p>
+                        <p>It will also keep track of your stats over time, so you can see how you're doing.</p>
+                        <p>Concept taken from <a href="https://github.com/esfalsa/n-stats">N-Stats by Esfalsa</a>,</p> 
+                        <p>although I wanted to flesh it out and be able to put this on one HTML page.</p>
+
+                        <details open>
+                            <summary>Buttons:</summary>
+                            <ul>
+                                <li><strong>Open Dialog</strong> - Opens the dialog to enter your data.</li>
+                                <li><strong>Load Data</strong> - Loads data for each nation manually.</li>
+                                <li><strong>Propagate Data</strong> - Propagates data for each nation automatically once every six seconds.</li>
+                                <li><strong>Save Data</strong> - Saves data to localStorage.</li>
+                                <li><strong>Import Data</strong> - Imports data from a file.</li>
+                                <li><strong>Export Data</strong> - Exports data to a file.</li>
+                                <li><strong>Clear Data</strong> - Clears data from screen and from localStorage.</li>
+                            </ul>
+                        </details>
+                </aside>
+            </details>
+                
+                <!-- create buttons for loading, propagating, saving, importing, exporting, and clearing data -->
+                <div id="buttons">
+                    <button type="button" class="button" id="open-dialog">Open Dialog</button>
+                    <button type="button" class="button" id="load-data">Load Data</button>
+                    <button type="button" class="button" id="propagate-data">Propagate Data</button>
+                    <button type="button" class="button" id="save-data">Save Data</button>
+                    <button type="button" class="button" id="import-data">Import Data</button>
+                    <button type="button" class="button" id="export-data">Export Data</button>
+                    <button type="button" class="button" id="clear-data">Clear Data</button>
+                </div>
+                
+            </section>
+            <br/>
+            <!-- output table and chart for nukes, shield, production, intercepts, strikes, radiation, and destroyed stats -->
+            <output>
+                <table class="shiny">
+                    <caption><strong>RUNNING TOTALS</strong></caption>
+                    <thead>
+                        <tr class="nukestat-tooltip">
+                            <th scope="col" class="nation">
+                                <i class="icon-flag-1"></i>
+                                Nation
+                            </th>
+                            <th scope="col" class="nukes">
+                                <i class="icon-bombs"></i>
+                                Nukes
+                            </th>
+                            <th scope="col" class="shield">
+                                <i class="icon-satellite"></i>
+                                Shield
+                            </th>
+                            <th scope="col" class="production">
+                                <i class="icon-industrial-building"></i>
+                                Production
+                            </th>
+                            <th scope="col" class="intercepts">
+                                <i class="icon-block"></i>
+                                Intercepts
+                            </th>
+                            <th scope="col" class="strikes">
+                                <i class="icon-mushroom-cloud"></i>
+                                Strikes
+                            </th>
+                            <th scope="col" class="radiation">
+                                <i class=icon-radioactive></i>
+                                Radiation
+                            </th>
+                            <th scope="col" class="destroyed" style="color:red">
+                                Destroyed
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- top row in table body will be average stats (if more than one entry), the ones below will be individual, bottom row will be aggregated total -->
+                        <div id="average"></div>
+                        <div id="rows"></div>
+                        <div id="total"></div>
+                    </tbody>
+                </table>
+            </output>
+            <template id="average-template">
+                <tr class="average" id="average-row">
+                    <th class="average nation"     scope="row">Average</td>
+                    <td class="average nukes"      id="average-nukes"></td>
+                    <td class="average shield"     id="average-shield"></td>
+                    <td class="average production" id="average-production"></td>
+                    <td class="average intercepts" id="average-intercepts"></td>
+                    <td class="average strikes"    id="average-strikes"></td>
+                    <td class="average radiation"  id="average-radiation"></td>
+                    <td class="average destroyed"  id="average-destroyed"></td>
+                </tr>
+            </template>
+            <template id="total-template">
+                <tr class="total" id="total-row">
+                    <th class="total nation"     scope="row">Total</td>
+                    <td class="total nukes"      id="total-nukes"></td>
+                    <td class="total shield"     id="total-shield"></td>
+                    <td class="total production" id="total-production"></td>
+                    <td class="total intercepts" id="total-intercepts"></td>
+                    <td class="total strikes"    id="total-strikes"></td>
+                    <td class="total radiation"  id="total-radiation"></td>
+                    <td class="total destroyed"  id="total-destroyed"></td>
+                </tr>
+            </template>
+            <template id="row-template">
+                <tr>
+                    <td class="nation"></td>
+                    <td class="nukes"></td>
+                    <td class="shield"></td>
+                    <td class="production"></td>
+                    <td class="intercepts"></td>
+                    <td class="strikes"></td>
+                    <td class="radiation"></td>
+                    <td class="destroyed"></td>
+                </tr>
+            </template>
+        </main>
+
+        <script>
+            let nukes      = 0,
+                shields    = 0,
+                production = 0,
+                intercepts = 0,
+                strikes    = 0,
+                radiation  = 0,
+                destroyed  = 0
+                index      = 0;
+
+            let nations = [];
+            let main = "";
+            const dialog = document.querySelector("dialog");
+            
+            window.onload = () => {
+                dialog.showModal();
+            };
+
+            const form = document.querySelector("form");
+            document.getElementById("submit").addEventListener("click", (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                nations = formData.get("puppets").split(",").map(nation => nation.trim());
+                main = formData.get("main");
+                console.log(nations);
+                dialog.close();
+            });
+
+            document.getElementById("cancel").addEventListener("click", () => {
+                dialog.close();
+            });
+
+            document.getElementById("open-dialog").addEventListener("click", () => {
+                dialog.showModal();
+            });
+
+            document.getElementById("load-data").addEventListener("click", () => {
+                if (index < nations.length) {
+                    fetchNationData(nations[index], true);
+                } else {
+                    document.getElementById("load-data").disabled = true;
+                }
+            });
+
+            document.getElementById("propagate-data").addEventListener("click", () => {
+                // change button to "Pause Propagation" and add event listener to pause propagation
+                if (index < nations.length) {
+                    // send http request every six seconds to get data from nationstates
+                    const interval = setInterval(fetchNationData(nations[index], false), 6000);
+                    document.getElementById("propagate-data").innerHTML = "Pause Propagation";
+                    document.getElementById("propagate-data").addEventListener("click", () => {
+                        clearInterval(interval);
+                        document.getElementById("propagate-data").innerHTML = "Propagate Data";
+                    });
+                } else {
+                    clearInterval(interval);
+                    document.getElementById("propagate-data").disabled = true;
+                }
+            });
+
+            const fetchNationData = (nation, isManual) => {
+                // create headers for fetch request
+                const headers = new Headers();
+                headers.append("User-Agent", `N-Stats (by:Atlae, usedby:${main})`);
+                if (isManual) {
+                    headers.append("userclick", Date.now().toString());
+                }
+                // fetch endpoint with useragent and userclick (unix timestamp of click event) headers
+                fetch(`https://www.nationstates.net/template-overall=none/nation=${nation}/page=nukes`, {
+                    headers: headers
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const htmlDoc = parser.parseFromString(data, "text/html");
+
+                        const statNukes      = htmlDoc.querySelector(".nukestat-nukes")?.textContent;
+                        const statShields    = htmlDoc.querySelector(".nukestat-shield")?.textContent;
+                        const statProduction = htmlDoc.querySelector(".nukestat-production")?.textContent;
+                        const statIntercepts = htmlDoc.querySelector(".nukestat-intercepts")?.textContent;
+                        const statStrikes    = htmlDoc.querySelector(".nukestat-strikes")?.textContent;
+                        const statRadiation  = htmlDoc.querySelector(".nukestat-radiation")?.textContent;
+
+                        nukes      += parseInt(statNukes ?? '0');
+                        shields    += parseInt(statShields ?? '0');
+                        production += parseInt(statProduction ?? '0');
+                        intercepts += parseInt(statIntercepts ?? '0');
+                        strikes    += parseInt(statStrikes ?? '0');
+                        radiation  += parseInt(statRadiation ?? '0');
+                        destroyed  += radiation == 100? 1 : 0;
+                        index      += 1;
+
+                        const row = document.getElementById("row-template").content.cloneNode(true);
+                        row.querySelector(".nation").textContent     = nation;
+                        row.querySelector(".nukes").textContent      = statNukes;
+                        row.querySelector(".shield").textContent     = statShields;
+                        row.querySelector(".production").textContent = statProduction;
+                        row.querySelector(".intercepts").textContent = statIntercepts;
+                        row.querySelector(".strikes").textContent    = statStrikes;
+                        row.querySelector(".radiation").textContent  = statRadiation;
+                        row.querySelector(".destroyed").textContent  = radiation == 100? "Yes" : "No";
+
+                        document.getElementById('rows').appendChild(row);
+
+                        if (index == 1) {
+                            const averageRow = document.getElementById("average-template").content.cloneNode(true);
+                            const totalRow = document.getElementById("total-template").content.cloneNode(true);
+                            document.getElementById('average').appendChild(averageRow);
+                            document.getElementById('total').appendChild(totalRow);                            
+                        }
+                        
+                        if (index >= 1) {
+                            updateAggregateData();
+                        }
+
+                    }
+                );
+            }
+
+            const updateAggregateData = () => {
+                const average = (value) => (value / index).toFixed(2);
+
+                document.getElementById("average-nukes").textContent      = average(nukes);
+                document.getElementById("average-shield").textContent     = average(shields);
+                document.getElementById("average-production").textContent = average(production);
+                document.getElementById("average-intercepts").textContent = average(intercepts);
+                document.getElementById("average-strikes").textContent    = average(strikes);
+                document.getElementById("average-radiation").textContent  = average(radiation);
+                document.getElementById("average-destroyed").textContent  = average(destroyed);
+
+                document.getElementById("total-nukes").textContent      = nukes;
+                document.getElementById("total-shield").textContent     = shields;
+                document.getElementById("total-production").textContent = production;
+                document.getElementById("total-intercepts").textContent = intercepts;
+                document.getElementById("total-strikes").textContent    = strikes;
+                document.getElementById("total-radiation").textContent  = radiation;
+                document.getElementById("total-destroyed").textContent  = destroyed;
+            }
+
+        </script>
+    </body>
+</html>
